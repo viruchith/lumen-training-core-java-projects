@@ -19,12 +19,12 @@ public class WatchListService implements IWatchListService {
 	}
 
 	@Override
-	public WatchList getByUser(User user) {
-		WatchList watchList = watchListDao.findByUser(user);
-		if (watchList==null) {
+	public List<WatchList> getByUser(User user) {
+		List<WatchList> watchLists = watchListDao.findByUser(user);
+		if (watchLists==null) {
 			throw new WatchListNotFoundException();
 		}
-		return watchList;
+		return watchLists;
 	}
 
 	@Override

@@ -62,8 +62,8 @@ public class Main {
 		
 //		watchListService.addMovieToWatchList(movieService.getById(4), watchList);
 		
-		 watchList = watchListService.getByUser(user);
-		 System.out.println(watchList);
+		 List<WatchList> watchLists = watchListService.getByUser(user);
+		 System.out.println(watchLists);
 		 
 		 System.out.println(watchListService.getMoviesByWatchList(watchList));
 		

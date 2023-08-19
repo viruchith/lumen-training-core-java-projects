@@ -33,6 +33,8 @@ th {
 		<br> <input type="submit" value="Search">
 	</form>
 	<br>
+	<span><a href="MyListsServlet">My Lists</a></span>
+	<br>
 	<hr>
 	<br>
 	<c:if test="${results!=null}">
@@ -49,7 +51,7 @@ th {
 			<tbody>
 				<c:forEach var="result" items="${results}">
 					<tr>
-						<td><a href="movie.jsp/${result.imdbID}"><c:out value="${result.imdbID}" /></a></td>
+						<td><a href="MovieServlet?imdbID=${result.imdbID}"><c:out value="${result.imdbID}" /></a></td>
 						<td><c:out value="${result.title}" /></td>
 						<td><c:out value="${result.year}" /></td>
 						<td><img src="${result.poster}"></td>

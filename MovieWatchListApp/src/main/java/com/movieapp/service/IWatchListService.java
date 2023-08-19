@@ -9,7 +9,7 @@ import com.movieapp.model.WatchList;
 
 public interface IWatchListService {
 	boolean addWatchList(User user,WatchList watchList);
-	WatchList getByUser(User user) throws WatchListNotFoundException;
+	List<WatchList> getByUser(User user) throws WatchListNotFoundException;
 	WatchList getById(Integer id) throws WatchListNotFoundException;
 	boolean addMovieToWatchList(Movie movie,WatchList watchList);
 	void removeMovieFromWatchList(Movie movie,WatchList watchList);

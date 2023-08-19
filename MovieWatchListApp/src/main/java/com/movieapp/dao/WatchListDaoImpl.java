@@ -36,21 +36,24 @@ public class WatchListDaoImpl implements IWatchListDao {
 	}
 
 	@Override
-	public WatchList findByUser(User user) {
+	public List<WatchList> findByUser(User user) {
 		try (Connection connection = DBConnection.openConnection();
 				PreparedStatement preparedStatement = connection
 						.prepareStatement(WatchListQueries.SELECT_WATCHLIST_BY_USER)) {
 			preparedStatement.setInt(1, user.getId());
 			ResultSet resultSet = preparedStatement.executeQuery();
-			if (resultSet.next()) {
+			List<WatchList> watchLists = new ArrayList<WatchList>();
+			while(resultSet.next()) {
 				WatchList watchList = new WatchList();
 				watchList.setId(resultSet.getInt("id"));
 				watchList.setUserId(resultSet.getInt("userId"));
 				watchList.setTitle(resultSet.getString("Title"));
 				watchList.setCreatedAt(resultSet.getString("createdAt"));
-
-				return watchList;
+				
+				watchLists.add(watchList);
 			}
+			
+			return watchLists;
 
 		} catch (Exception e) {
 			e.printStackTrace();
